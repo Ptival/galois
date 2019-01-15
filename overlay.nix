@@ -2,7 +2,8 @@
 }:
 selfNixPkgs: superNixPkgs:
 let
-  nixpkgs = selfNixPkgs;
+  configuration = import ./configuration.nix;
+  nixpkgs       = selfNixPkgs;
 in
 # TODO: make it so that it is easy to switch between repository version vs. local version
 {

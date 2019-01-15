@@ -1,4 +1,5 @@
-{ compiler ? (import ./configuration.nix).compiler
+let configuration = import ./configuration.nix; in
+{ compiler ? configuration.compiler
 , nixpkgs  ? import <nixpkgs> { overlays = [(import ./overlay.nix { inherit compiler; })]; }
 }:
 with nixpkgs;
