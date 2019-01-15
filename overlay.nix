@@ -4,6 +4,7 @@ selfNixPkgs: superNixPkgs:
 let
   nixpkgs = selfNixPkgs;
 in
+# TODO: make it so that it is easy to switch between repository version vs. local version
 {
   # NOTE: the commented out packages do not build on my machine
   binary-symbols     = superNixPkgs.callPackage ./binary-symbols.nix     { inherit nixpkgs compiler; };
