@@ -1,12 +1,10 @@
-{ compiler ? (import ./configuration.nix).compiler
-, nixpkgs  ? import <nixpkgs> { overlays = [(import ./overlay.nix { inherit compiler; })]; }
-}:
+let configuration = import ./configuration.nix; in
+{ nixpkgs ? import ./nixpkgs.nix }:
 with nixpkgs;
-let
-  configuration = import ./configuration.nix;
-in
+haskell.lib.dontCheck (
 haskellPackages.callCabal2nix "macaw-x86-symbolic" ((fetchFromGitHub {
   inherit (configuration.macaw) rev sha256;
   owner = "GaloisInc";
   repo  = "macaw";
 }) + "/x86_symbolic") {}
+)

@@ -1,6 +1,4 @@
-{ compiler ? (import ./configuration.nix).compiler
-, nixpkgs  ? import <nixpkgs> { overlays = [(import ./overlay.nix { inherit compiler; })]; }
-}:
+{ nixpkgs ? import ./nixpkgs.nix }:
 with nixpkgs;
 haskellPackages.callCabal2nix "cryptol" (fetchFromGitHub {
   owner  = "GaloisInc";

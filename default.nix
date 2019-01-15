@@ -1,6 +1,4 @@
-{ compiler ? (import ./configuration.nix).compiler
-, nixpkgs  ? import <nixpkgs> { overlays = [(import ./overlay.nix { inherit compiler; })]; }
-}:
+{ nixpkgs ? import ./nixpkgs.nix }:
 with nixpkgs;
 mkShell {
   buildInputs = [
@@ -8,20 +6,22 @@ mkShell {
     crucible-jvm
     crucible-llvm
     crucible-saw
-    # cryptol-verifier
+    cryptol-verifier
     elf-edit
     flexdis86
-    # jvm-verifier
-    # llvm-verifier
+    jvm-verifier
+    llvm-verifier
     macaw-base
     macaw-symbolic
     macaw-x86
-    # macaw-x86-symbolic
+    macaw-x86-symbolic
     saw-core
     saw-core-aig
     saw-core-coq
     saw-core-sbv
     saw-core-what4
+    # NOTE: temporarily commented out as there is an upstream bug
+    # saw-script
     what4
     haskellPackages.abcBridge
     haskellPackages.aig

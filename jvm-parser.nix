@@ -1,5 +1,4 @@
-{ nixpkgs ? import <nixpkgs> {}
-}:
+{ nixpkgs ? import ./nixpkgs.nix }:
 with nixpkgs;
 haskellPackages.callCabal2nix "jvm-parser" (fetchFromGitHub {
   owner  = "GaloisInc";

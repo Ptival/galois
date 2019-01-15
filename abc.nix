@@ -1,4 +1,4 @@
-{ nixpkgs  ? import <nixpkgs> {}
+{ nixpkgs ? import ./nixpkgs.nix
 }:
 with nixpkgs;
 stdenv.mkDerivation rec {

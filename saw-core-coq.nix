@@ -1,12 +1,11 @@
 let configuration = import ./configuration.nix; in
-{ compiler ? configuration.compiler
-, nixpkgs  ? import <nixpkgs> { overlays = [(import ./overlay.nix { inherit compiler; })]; }
-, local    ? configuration.saw-core-coq.local
+{ nixpkgs ? import ./nixpkgs.nix
+, local   ? configuration.saw-core-coq.local
 }:
 with nixpkgs;
 if local
 then
-haskell.packages.${compiler}.callPackage ./saw-core-coq/default.nix {}
+haskellPackages.callPackage ./saw-core-coq/default.nix {}
 else
 haskellPackages.callCabal2nix "saw-core-coq" (fetchFromGitHub {
   owner  = "GaloisInc";

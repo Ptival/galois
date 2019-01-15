@@ -1,7 +1,4 @@
-let configuration = import ./configuration.nix; in
-{ compiler ? configuration.compiler
-, nixpkgs  ? import <nixpkgs> { overlays = [(import ./overlay.nix { inherit compiler; })]; }
-}:
+{ nixpkgs ? import ./nixpkgs.nix }:
 with nixpkgs;
 haskellPackages.callCabal2nix "parameterized-utils" (fetchFromGitHub {
   owner  = "GaloisInc";
