@@ -8,13 +8,18 @@ The setup assumes a directory structure as follows:
 
 ```
 `- Galois
+  `- crucible
+    `- crucible-llvm
+      `- default.nix
+    `- what4
+      `- default.nix
   `- saw
-    `- saw-core.nix
     `- saw-core
       `- default.nix
-    `- saw-core-coq.nix
     `- saw-core-coq
       `- default.nix
+  `- saw-core.nix
+  `- saw-core-coq.nix
 ```
 
 Those directories can be obtained by cloning their respective repository from
