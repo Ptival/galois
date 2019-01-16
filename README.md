@@ -8,19 +8,20 @@ The setup assumes a directory structure as follows:
 
 ```
 `- Galois
-  `- projectA
-    `- subprojectA-A
-      `- default.nix
-    `- subprojectA-B
-      `- default.nix
-  `- projectB
-    `- default.nix
+  `- galois-packages
+  | `- projectA
+  | | `- subprojectA-A
+  | | | `- default.nix
+  | | `- subprojectA-B
+  | |   `- default.nix
+  | `- projectB
+  | | `- default.nix
+  | `- subprojectA-A.nix
+  | `- subprojectA-B.nix
+  | `- projectB.nix
   `- configuration.nix
   `- nixpkgs.nix
   `- overlay.nix
-  `- subprojectA-A.nix
-  `- subprojectA-B.nix
-  `- projectB.nix
 ```
 
 The directories can be obtained by cloning their respective repository.  The
@@ -61,8 +62,9 @@ Warnings
 
 * Because we only override `haskellPackages`, it is important that all packages
   use `haskellPackages.callPackage`, rather than
-  `haskell.packages.${compiler}.callPackage`.  We try and make this hard to
-  avoid by not passing in the value of the `compiler` variable.
+  `haskell.packages.${compiler}.callPackage`.  We try and make this mistake easy
+  to avoid by not passing the value of the `compiler` variable explicitly, but
+  it is present in the configuration.
 
 * In order to make sure that the sharing is perfect, all packages are
   discouraged from manually passing arguments to `callPackage`.  Instead, if an
