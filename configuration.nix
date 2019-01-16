@@ -5,11 +5,12 @@ rec {
 
   # Per-project configuration
 
-  # All fields should look like:
+  # All project-specific fields should look like:
   # {
-  #   local  = false;     (required) change to `true` if you want to build locally
-  #   path   = "...";     (optional) directory to source, from repository's root
-  #   remote = { ... };   (required) describes the repository to build from when `local` is `false`
+  #   local   = false;                       (required) change to `true` if you want to build locally
+  #   path    = "...";                       (optional) directory to source, from repository's root
+  #   remote  = { ... };                     (required) describes the repository to build from when `local` is `false`
+  #   wrapper = nixpkgs: drv: ... drv ...;   (optional) function to post-process the derivation
   # }
 
   abcBridge = {
