@@ -7,17 +7,20 @@ let
     packageName:
       let
         config      = configuration.${packageName};
-        projectPath = config.path or "";
+        packagePath = config.path or "";
+        projectPath = (config.project or packageName) + packagePath;
+        remoteName  = config.remote or packageName;
+        remoteInfo  = builtins.fromJSON (builtins.readFile (./galois-packages/revisions + "/${packageName}.json"));
         drv         =
           if config.local
           then
             selfNixPkgs.haskellPackages.callPackage
-              (./galois-packages + "/${projectPath}/default.nix")
+              (./galois-packages + "/${remoteName}/default.nix")
               {}
           else
             selfNixPkgs.haskellPackages.callCabal2nix
               packageName
-              ((selfNixPkgs.fetchFromGitHub config.remote) + "/${projectPath}")
+              ((selfNixPkgs.fetchFromGitHub remoteInfo) + "/${packagePath}")
               {}
           ;
       in
