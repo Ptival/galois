@@ -1,0 +1,25 @@
+extra-deps:
+  - crackNum-2.3
+  - dotgen-0.4.2
+  - fgl-visualize-0.1.0.1
+  - FloatingHex-0.4
+  - GraphSCC-1.0.4
+  - monadLib-3.8
+  - panic-0.4.0.1
+  - sbv-7.13
+  - simple-smt-0.9.3
+packages:
+  - '.'
+  - '../abcBridge'
+  - '../aig'
+  - '../crucible/what4'
+  - '../cryptol'
+  - '../cryptol-verifier'
+  - '../llvm-pretty'
+  - '../llvm-pretty-bc-parser'
+  - '../parameterized-utils'
+  - '../saw-core'
+  - '../saw-core-aig'
+  - '../saw-core-sbv'
+  - '../saw-core-what4'
+resolver: lts-12.16

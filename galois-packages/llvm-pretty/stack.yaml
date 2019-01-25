@@ -1,0 +1,5 @@
+extra-deps:
+  - monadLib-3.8
+packages:
+  - '.'
+resolver: lts-12.16

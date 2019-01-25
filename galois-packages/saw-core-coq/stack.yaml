@@ -1,0 +1,5 @@
+packages:
+  - '.'
+  - '../saw-core'
+  - '../parameterized-utils'
+resolver: lts-12.16
