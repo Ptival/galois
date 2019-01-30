@@ -1,0 +1,6 @@
+packages:
+  - '.'
+  - '../crucible/what4'
+  - '../parameterized-utils'
+  - '../saw-core'
+resolver: lts-12.16

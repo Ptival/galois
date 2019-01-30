@@ -34,6 +34,7 @@ packages:
   - '../parameterized-utils'
   - '../saw-core'
   - '../saw-core-aig'
+  - '../saw-core-coq'
   - '../saw-core-sbv'
   - '../saw-core-what4'
   - '../crucible/what4'
