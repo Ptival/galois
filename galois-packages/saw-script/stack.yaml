@@ -1,0 +1,40 @@
+extra-deps:
+- crackNum-2.3
+- fgl-visualize-0.1.0.1
+- GraphSCC-1.0.4
+- IfElse-0.85
+- llvm-pretty-bc-parser-0.4.0.0
+- monadLib-3.8
+- panic-0.4.0.1
+- parameterized-utils-1.0.1
+- sbv-7.13
+- simple-smt-0.9.3
+packages:
+  - '.'
+  - '../abcBridge'
+  - '../aig'
+  - '../crucible/crucible'
+  - '../crucible/crucible-jvm'
+  - '../crucible/crucible-llvm'
+  - '../crucible/crucible-saw'
+  - '../crucible/crux'
+  - '../cryptol'
+  - '../cryptol-verifier'
+  - '../dwarf'
+  - '../elf-edit'
+  - '../flexdis86'
+  - '../jvm-parser'
+  - '../jvm-verifier'
+  - '../llvm-pretty'
+  - '../llvm-verifier'
+  - '../macaw/base'
+  - '../macaw/symbolic'
+  - '../macaw/x86'
+  - '../macaw/x86_symbolic'
+  - '../parameterized-utils'
+  - '../saw-core'
+  - '../saw-core-aig'
+  - '../saw-core-sbv'
+  - '../saw-core-what4'
+  - '../crucible/what4'
+resolver: lts-12.16

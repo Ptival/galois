@@ -56,6 +56,9 @@ in
 
   haskellPackages = nixpkgs.haskell.packages.${compiler}.extend (selfHaskellPkgs: superHaskellPkgs: {
     abcBridge             = makePackage "abcBridge";
+    # Current aeson does not build with ghc844 because it's missing `contravariant` dependency
+    # cf. https://github.com/NixOS/nixpkgs/issues/53620
+    aeson                 = superNixPkgs.haskell.lib.addBuildDepends superHaskellPkgs.aeson [ selfHaskellPkgs.contravariant ];
     aig                   = makePackage "aig";
     cryptol               = makePackage "cryptol";
     jvm-parser            = makePackage "jvm-parser";
