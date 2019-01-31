@@ -25,7 +25,10 @@ rec {
   abcBridge = {
     local   = false;
     wrapper = nixpkgs: drv:
-      nixpkgs.haskell.lib.dontCheck drv;
+      overrideGPlusPlus nixpkgs (
+      drv
+      )
+      ;
   };
 
   aig = {
