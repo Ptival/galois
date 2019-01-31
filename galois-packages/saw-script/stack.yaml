@@ -1,12 +1,13 @@
 extra-deps:
 - crackNum-2.3
+- dotgen-0.4.2@sha256:309b7cc8a3593a8e48bee7b53020d5f72db156d58edf78a0214f58fbb84b292b
 - fgl-visualize-0.1.0.1
+- FloatingHex-0.4@sha256:05f65f2b0103d98574b2a2b4a592e02d83ebb13bdbad347b9157507165cf51e7
 - GraphSCC-1.0.4
 - IfElse-0.85
 - llvm-pretty-bc-parser-0.4.0.0
 - monadLib-3.8
 - panic-0.4.0.1
-- parameterized-utils-1.0.1
 - sbv-7.13
 - simple-smt-0.9.3
 packages:
@@ -23,6 +24,7 @@ packages:
   - '../dwarf'
   - '../elf-edit'
   - '../flexdis86'
+  - '../flexdis86/binary-symbols'
   - '../jvm-parser'
   - '../jvm-verifier'
   - '../llvm-pretty'

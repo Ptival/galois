@@ -21,7 +21,7 @@ mkShell {
     saw-core-sbv
     saw-core-what4
     # NOTE: temporarily commented out as there is an upstream bug
-    # saw-script
+    saw-script
     what4
     haskellPackages.abcBridge
     haskellPackages.aig

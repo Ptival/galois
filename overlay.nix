@@ -23,8 +23,14 @@ let
               ((selfNixPkgs.fetchFromGitHub remoteInfo) + "/${packagePath}")
               {}
           ;
+        noWrapper   = nixpkgs: drv: drv;
       in
-      (config.wrapper or (nixpkgs: drv: drv)) selfNixPkgs drv
+      # If the `config` contains a `wrapper` field, said field is a function
+      # expecting `nixpkgs` and the derivation as input, and that performs
+      # modifications to the derivation.  We simply apply the function to the
+      # current derivation `drv`, or in its absence, apply a function
+      # `noWrapper` that returns the derivation unchanged instead.
+      (config.wrapper or noWrapper) selfNixPkgs drv
     ;
   nixpkgs = selfNixPkgs; # just so that we can write "inherit nixpkgs;"
 in

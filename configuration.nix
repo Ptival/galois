@@ -1,3 +1,10 @@
+# Global helpers
+let
+  overrideGPlusPlus = nixpkgs: drv:
+    nixpkgs.lib.overrideDerivation drv (drv: {
+      patchPhase = ''sed -i 's/pgmlg++/pgmlclang++/g' *.cabal'';
+    });
+in
 rec {
 
   # Global configuration
@@ -62,9 +69,14 @@ rec {
   };
 
   cryptol-verifier = {
-    local = false;
+    local = true; # Darwin fix
     wrapper = nixpkgs: drv:
-      nixpkgs.haskell.lib.disableCabalFlag drv "build-css";
+      overrideGPlusPlus nixpkgs (
+      nixpkgs.haskell.lib.addBuildDepends (
+        drv
+      ) [ nixpkgs.abc nixpkgs.clang ]
+      )
+      ;
   };
 
   elf-edit = {
@@ -86,12 +98,12 @@ rec {
   };
 
   jvm-verifier = {
-    local = false;
+    local = true; # Darwin fix
     wrapper = nixpkgs: drv:
-      nixpkgs.haskell.lib.disableCabalFlag (
+      overrideGPlusPlus nixpkgs (
       nixpkgs.haskell.lib.dontCheck
       drv
-      ) "build-jss"
+      )
       ;
   };
 
@@ -107,16 +119,13 @@ rec {
   };
 
   llvm-verifier = {
-    local = false;
+    local = true; # Darwin fix
     wrapper = nixpkgs: drv:
-      nixpkgs.haskell.lib.disableCabalFlag (
-      nixpkgs.haskell.lib.disableCabalFlag (
-      nixpkgs.haskell.lib.disableLibraryProfiling (
-      nixpkgs.haskell.lib.dontCheck
+      overrideGPlusPlus nixpkgs (
+      nixpkgs.haskell.lib.addBuildDepends (
       drv
+      ) [ nixpkgs.abc ]
       )
-      ) "build-lss"
-      ) "build-utils"
       ;
   };
 
@@ -173,7 +182,11 @@ rec {
   };
 
   saw-script = {
-    local = false;
+    local   = true; # Darwin fix
+    wrapper = nixpkgs: drv:
+      overrideGPlusPlus nixpkgs (
+      drv
+      );
   };
 
   what4 = {
