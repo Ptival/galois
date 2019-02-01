@@ -118,7 +118,9 @@ rec {
   llvm-pretty-bc-parser = {
     local = false;
     wrapper = nixpkgs: drv:
-      nixpkgs.haskell.lib.dontCheck drv;
+      nixpkgs.haskell.lib.dontCheck
+      drv
+      ;
   };
 
   llvm-verifier = {
@@ -157,8 +159,10 @@ rec {
     inherit (macaw) local remote;
     path = "x86_symbolic";
     wrapper = nixpkgs: drv:
-      nixpkgs.haskell.lib.dontCheck drv;
-};
+      nixpkgs.haskell.lib.dontCheck
+      drv
+      ;
+  };
 
   parameterized-utils = {
     local = false;
