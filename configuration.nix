@@ -14,16 +14,17 @@ rec {
 
   # All project-specific fields should look like:
   # {
-  #   local   = false;                       (required) change to `true` if you want to build locally
+  #   local   = true;                       (required) change to `true` if you want to build locally
   #   owner   = "...";                       (optional) owner of the remote (default being "GaloisInc")
   #   path    = "...";                       (optional) directory to source, from repository's root + `project`
   #   project = "...";                       (optional) used as a prefix for `path`
   #   remote  = "...";                       (optional) used to pick the revisions file, can be shared by inheriting
+  #   rev     = "...";                       (optional) a revision to pin the package at
   #   wrapper = nixpkgs: drv: ... drv ...;   (optional) function to post-process the derivation
   # }
 
   abcBridge = {
-    local   = false;
+    local   = true;
     wrapper = nixpkgs: drv:
       overrideGPlusPlus nixpkgs (
       drv
@@ -32,7 +33,7 @@ rec {
   };
 
   aig = {
-    local = false;
+    local = true;
   };
 
   binary-symbols = {
@@ -42,7 +43,7 @@ rec {
 
   # NOTE: this is both an actual project and a meta-project
   crucible = {
-    local = false;
+    local = true;
     path = "crucible";
     remote = "crucible";
   };
@@ -68,7 +69,7 @@ rec {
   };
 
   cryptol = {
-    local = false;
+    local = true;
   };
 
   cryptol-verifier = {
@@ -83,21 +84,21 @@ rec {
   };
 
   elf-edit = {
-    local = false;
+    local = true;
   };
 
   galois-dwarf = {
-    local = false;
+    local = true;
     remote = "dwarf";
   };
 
   flexdis86 = {
-    local = false;
+    local = true;
     remote = "flexdis86";
   };
 
   jvm-parser = {
-    local = false;
+    local = true;
   };
 
   jvm-verifier = {
@@ -111,12 +112,12 @@ rec {
   };
 
   llvm-pretty = {
-    local = false;
+    local = true;
     owner = "elliottt";
   };
 
   llvm-pretty-bc-parser = {
-    local = false;
+    local = true;
     wrapper = nixpkgs: drv:
       nixpkgs.haskell.lib.dontCheck
       drv
@@ -136,7 +137,7 @@ rec {
 
   # NOTE: This is an umbrella field for multiple projects
   macaw = {
-    local = false;
+    local = true;
     remote = "macaw";
   };
 
@@ -165,27 +166,27 @@ rec {
   };
 
   parameterized-utils = {
-    local = false;
+    local = true;
   };
 
   saw-core = {
-    local = false;
+    local = true;
   };
 
   saw-core-aig = {
-    local = false;
+    local = true;
   };
 
   saw-core-coq = {
-    local = false;
+    local = true;
   };
 
   saw-core-sbv = {
-    local = false;
+    local = true;
   };
 
   saw-core-what4 = {
-    local = false;
+    local = true;
   };
 
   saw-script = {
@@ -194,6 +195,12 @@ rec {
       overrideGPlusPlus nixpkgs (
       drv
       );
+  };
+
+  sbv = {
+    local = true;
+    owner = "LeventErkok";
+    rev = "v8.0";
   };
 
   what4 = {

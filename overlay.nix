@@ -15,7 +15,7 @@ let
           if config.local
           then
             selfNixPkgs.haskellPackages.callPackage
-              (./galois-packages + "/${remoteName}/default.nix")
+              (./galois-packages + "/${remoteName}/${packagePath}/default.nix")
               {}
           else
             selfNixPkgs.haskellPackages.callCabal2nix
@@ -71,5 +71,6 @@ in
     llvm-pretty           = makePackage "llvm-pretty";
     llvm-pretty-bc-parser = makePackage "llvm-pretty-bc-parser";
     parameterized-utils   = makePackage "parameterized-utils";
+    sbv                   = makePackage "sbv";
   });
 }

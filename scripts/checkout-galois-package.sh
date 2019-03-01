@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
+set -euv
 
-BRANCH=`./get-branch-for-package.sh ${1}`
-OWNER=`./get-owner-for-package.sh ${1}`
-PACKAGEPATH=`./get-path-for-package.sh ${1}`
-REMOTE=`./get-remote-for-package.sh ${1}`
+: ${GALOIS?Need path to Galois directory in GALOIS environment variable}
+: ${1?First argument should be a package name}
 
-cd galois-packages
+BRANCH=`     ${GALOIS}/scripts/get-branch-for-package.sh ${1}`
+OWNER=`      ${GALOIS}/scripts/get-owner-for-package.sh ${1}`
+PACKAGEPATH=`${GALOIS}/scripts/get-path-for-package.sh ${1}`
+REMOTE=`     ${GALOIS}/scripts/get-remote-for-package.sh ${1}`
+
+cd ${GALOIS}/galois-packages
 
 if [ ! -d "${REMOTE}" ]; then
     echo "Cloning package ${1} from remote ${OWNER}/${REMOTE}"

@@ -7,7 +7,6 @@ extra-deps:
 - IfElse-0.85
 - monadLib-3.8
 - panic-0.4.0.1
-- sbv-7.13
 - simple-smt-0.9.3
 packages:
   - '.'
@@ -39,5 +38,6 @@ packages:
   - '../saw-core-coq'
   - '../saw-core-sbv'
   - '../saw-core-what4'
+  - '../sbv'
   - '../crucible/what4'
 resolver: lts-12.16

@@ -1,5 +1,7 @@
 all: checkout
 
+GALOIS=$(shell pwd)
+
 PROJECTS=\
 	abcBridge\
 	aig\
@@ -37,13 +39,15 @@ build:
 
 checkout:
 	for i in ${PROJECTS}; do \
-		./checkout-galois-package.sh $$i; \
+		cd scripts; \
+		GALOIS=${GALOIS} ./checkout-galois-package.sh $$i; \
 	done
 	echo "DONE"
 
 update:
 	for i in ${PROJECTS}; do \
-		./update-galois-package.sh $$i; \
+		cd scripts; \
+		GALOIS=${GALOIS} ./update-galois-package.sh $$i; \
 	done
 	echo "DONE"
 
