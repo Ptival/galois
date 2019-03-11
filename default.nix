@@ -20,7 +20,6 @@ mkShell {
     saw-core-coq
     saw-core-sbv
     saw-core-what4
-    # NOTE: temporarily commented out as there is an upstream bug
     saw-script
     what4
     haskellPackages.abcBridge
@@ -28,5 +27,6 @@ mkShell {
     haskellPackages.cryptol
     haskellPackages.llvm-pretty
     haskellPackages.parameterized-utils
+    haskellPackages.sbv
   ];
 }

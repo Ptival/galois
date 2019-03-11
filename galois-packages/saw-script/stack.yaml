@@ -1,13 +1,15 @@
 extra-deps:
-- crackNum-2.3
-- dotgen-0.4.2@sha256:309b7cc8a3593a8e48bee7b53020d5f72db156d58edf78a0214f58fbb84b292b
-- fgl-visualize-0.1.0.1
-- FloatingHex-0.4@sha256:05f65f2b0103d98574b2a2b4a592e02d83ebb13bdbad347b9157507165cf51e7
-- GraphSCC-1.0.4
-- IfElse-0.85
-- monadLib-3.8
-- panic-0.4.0.1
-- simple-smt-0.9.3
+  - boomerang-1.4.5.6@sha256:4f8407b9482a500ef9f8dc3fa13f9615d4d33a7c530b67c1ca27535e136a152d
+  - crackNum-2.3@sha256:e75ed11406e550abd0bd06297c2cbe20e66cdac0764f7a5176b42c727aefed31
+  - dotgen-0.4.2@sha256:309b7cc8a3593a8e48bee7b53020d5f72db156d58edf78a0214f58fbb84b292b
+  - fgl-visualize-0.1.0.1@sha256:e682066053a6e75478a08fd6822dd0143a3b8ea23244bdb01dd389a266447c5e
+  - FloatingHex-0.4@sha256:05f65f2b0103d98574b2a2b4a592e02d83ebb13bdbad347b9157507165cf51e7
+  - GraphSCC-1.0.4@sha256:dc3c6d6c59c15a50c9ce701bdead86f19bc2367e0d30c81a7bf55ccc6e5bd04d
+  - IfElse-0.85@sha256:6939b94acc6a55f545f63a168a349dd2fbe4b9a7cca73bf60282db5cc6aa47d2
+  - itanium-abi-0.1.1.0@sha256:a0b338af8975f35e83cf94fb209b17c62b1a44a0f9f484f3b72cf15d01ea08d5
+  - monadLib-3.9@sha256:dc0d8579840968be03fc2ce1c21d5af055fe5a38b65b99793dd720f5e07aaa34
+  - panic-0.4.0.1@sha256:fb46577c9e0ca38c37960572f958a8469f2b577e963ed4f3ea1904d8400d828b
+  - simple-smt-0.9.4@sha256:fb55e015455701fb16648dbaa0396da2e20a57f06b66ae8ae5b6b21b47fbed0d
 packages:
   - '.'
   - '../abcBridge'

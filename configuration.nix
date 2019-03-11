@@ -56,6 +56,11 @@ rec {
   crucible-llvm = {
     inherit (crucible) local remote;
     path = "crucible-llvm";
+    wrapper = nixpkgs: drv:
+      nixpkgs.haskell.lib.addBuildDepends (
+        drv
+      ) [ nixpkgs.llvm ]
+      ;
   };
 
   crucible-saw = {
@@ -190,7 +195,8 @@ rec {
   };
 
   saw-script = {
-    local   = true; # Darwin fix
+    local = true; # Darwin fix
+    rev = "coq-export";
     wrapper = nixpkgs: drv:
       overrideGPlusPlus nixpkgs (
       drv
