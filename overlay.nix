@@ -3,6 +3,7 @@ let configuration = import ./configuration.nix; in
 }:
 selfNixPkgs: superNixPkgs:
 let
+
   makePackage =
     packageName:
       let
@@ -31,12 +32,17 @@ let
       # current derivation `drv`, or in its absence, apply a function
       # `noWrapper` that returns the derivation unchanged instead.
       (config.wrapper or noWrapper) selfNixPkgs drv
-    ;
+      ;
+
   nixpkgs = selfNixPkgs; # just so that we can write "inherit nixpkgs;"
+
+  notBroken = drv: superNixPkgs.haskell.lib.overrideCabal drv (drv: { broken = false; });
+
 in
 {
   abc                = superNixPkgs.callPackage ./galois-packages/abc.nix { inherit nixpkgs; };
   binary-symbols     = makePackage "binary-symbols";
+  codescape          = makePackage "codescape";
   crucible           = makePackage "crucible";
   crucible-jvm       = makePackage "crucible-jvm";
   crucible-llvm      = makePackage "crucible-llvm";
@@ -72,5 +78,8 @@ in
     llvm-pretty-bc-parser = makePackage "llvm-pretty-bc-parser";
     parameterized-utils   = makePackage "parameterized-utils";
     sbv                   = makePackage "sbv";
+    # Tests require hspec, skip them
+    versioning            = superNixPkgs.haskell.lib.dontCheck (notBroken superHaskellPkgs.versioning);
+    versioning-servant    = superNixPkgs.haskell.lib.dontCheck (notBroken superHaskellPkgs.versioning-servant);
   });
 }

@@ -24,7 +24,7 @@ rec {
   # }
 
   abcBridge = {
-    local   = true;
+    local = true;
     wrapper = nixpkgs: drv:
       overrideGPlusPlus nixpkgs (
       drv
@@ -39,6 +39,11 @@ rec {
   binary-symbols = {
     inherit (flexdis86) local remote;
     path = "binary-symbols";
+  };
+
+  codescape = {
+    local = true;
+    path = "backend";
   };
 
   # NOTE: this is both an actual project and a meta-project
