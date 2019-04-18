@@ -1,0 +1,7 @@
+extra-deps:
+  - panic-0.4.0.1@sha256:fb46577c9e0ca38c37960572f958a8469f2b577e963ed4f3ea1904d8400d828b
+packages:
+  - '.'
+  - '../../parameterized-utils'
+  - '../what4'
+resolver: lts-12.16
