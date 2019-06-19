@@ -46,15 +46,15 @@ checkout:
 	for i in ${SAW_PROJECTS}; do (\
 		echo "\n\n\n>>>>> $$i"; \
 		cd scripts; \
-		GALOIS=${GALOIS} ./checkout-galois-package.sh saw $$i; \
+		GALOIS=${GALOIS} ./checkout.sh saw $$i; \
 	); done
 	echo "DONE"
 
-update:
+default-nix:
 	for i in ${SAW_PROJECTS}; do (\
 		echo "\n\n\n>>>>> $$i"; \
 		cd scripts; \
-		GALOIS=${GALOIS} ./update-galois-package.sh saw $$i; \
+		GALOIS=${GALOIS} ./generate-default-nix.sh saw $$i; \
 	); done
 	echo "DONE"
 

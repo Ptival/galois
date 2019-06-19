@@ -4,10 +4,10 @@ set -eu
 : ${GALOIS?Need path to Galois directory in GALOIS environment variable}
 : ${1?First argument should be a package name}
 
-REVISION=`   ${GALOIS}/scripts/get-revision-for-package.sh ${1}`
-OWNER=`      ${GALOIS}/scripts/get-owner-for-package.sh ${1}`
-PACKAGEPATH=`${GALOIS}/scripts/get-path-for-package.sh ${1}`
-REMOTE=`     ${GALOIS}/scripts/get-remote-for-package.sh ${1}`
+REVISION=`   ${GALOIS}/scripts/get-revision.sh ${1}`
+OWNER=`      ${GALOIS}/scripts/get-owner.sh ${1}`
+PACKAGEPATH=`${GALOIS}/scripts/get-local-path.sh ${1}`
+REMOTE=`     ${GALOIS}/scripts/get-remote.sh ${1}`
 
 cd ${GALOIS}/projects
 

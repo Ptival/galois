@@ -8,36 +8,31 @@ The setup assumes a directory structure as follows:
 
 ```
 `- Galois
+  `- default.nix
+  `- utils.nix
   `- projects
-  | `- projectA
+  | `- projectA.nix
+  | `- subprojectA-A.nix
+  | `- ... (nix expressions for each package)
+  | | `- configuration.nix
+  | | `- nixpkgs.nix
+  | | `- overlay.nix
   | | `- subprojectA-A
   | | | `- default.nix
-  | | `- subprojectA-B
-  | |   `- default.nix
-  | `- projectB
-  | | `- default.nix
-  | `- configuration.nix
-  | `- nixpkgs.nix
-  | `- overlay.nix
-  | `- subprojectA-A.nix
-  | `- subprojectA-B.nix
-  | `- projectB.nix
-  `- configuration.nix
-  `- nixpkgs.nix
-  `- overlay.nix
+  | | `- ... (other sub-projects)
+  | `- ... (other projects)
 ```
 
-The directories can be obtained by cloning their respective repository.  The
-`default.nix` files are simply obtained by running `cabal2nix . > default.nix`
-in their respective repository.  A shell script `setup.sh` will be provided to
-set up or update those repositories.
+The top-level `default.nix` lets one build a nix shell with the appropriate
+projects built by simply running `nix-shell`.  If a project's package is broken,
+and you want to create a shell of everything up to (and including) its
+dependencies, you should instead run `nix-shell
+./projects/<project>/<package>.nix`.
 
-The `default.nix` files are only necessary for those projects you wish to build
-locally, either because you are working on them, or because their upstream
-version causes problems in your setup.  There should be examples of local builds
-available, you can look in `configuration.nix` for projects that have a `local`
-variable, and open the corresponding `<project>.nix` to see how the variable is
-used.
+Each project must define its own `configuration.nix` and `overlay.nix`.  This is
+necessary because, at times, different projects might require conflictual
+versions of some Haskell packages.  On the other hand, we assume that for a
+given project, all packages can agree on all Haskell packages.
 
 How it works
 ------------
