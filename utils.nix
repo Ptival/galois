@@ -6,14 +6,14 @@ rec {
 
   getPackagePathInRepo = pkg: pkg.path or ".";
 
-  # getPackageRemoteName = pkgName: projectConfiguration.${pkgName}.remote or pkgName;
+  getPackageRemoteName = pkgName: projectConfiguration.packages.${pkgName}.remote or pkgName;
 
-  # getPackageLocalPath  =
-  #   projectName: pkgName:
-  #   let
-  #     pkg = projectConfiguration.${pkgName};
-  #   in
-  #     "${getPackagePathToRepo pkg}/${getPackageRemoteName projectName pkgName}/${getPackagePathInRepo pkg}";
+  getPackageLocalPath  =
+    pkgName:
+    let
+      pkg = projectConfiguration.packages.${pkgName};
+    in
+      "${getPackagePathToRepo pkg}/${getPackageRemoteName pkgName}/${getPackagePathInRepo pkg}";
 
   makePackage =
     nixpkgs: projectName: packageName:

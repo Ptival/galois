@@ -9,7 +9,7 @@ PROJECT=$1
 PACKAGE=$2
 
 OWNER=`nix-instantiate --eval -E "
-let configuration = import ${GALOIS}/configuration.nix; in
+let configuration = import ${GALOIS}/projects/${PROJECT}/configuration.nix; in
 configuration.${PACKAGE}.owner or \"GaloisInc\"
 "`
 

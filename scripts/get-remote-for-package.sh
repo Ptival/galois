@@ -11,8 +11,11 @@ PACKAGE=$2
 # Some packages names do not correspond to their repository name.  They should
 # have a `remote` field in `configuration.nix` to point to the right repository.
 REMOTE=`nix-instantiate --eval -E "
-let configuration = import ${GALOIS}/configuration.nix; in
-configuration.getPackageRemoteName \"${PROJECT}\" \"${PACKAGE}\"
+let
+  configuration = import ${GALOIS}/projects/${PROJECT}/configuration.nix;
+  utils         = import ${GALOIS}/utils.nix { projectConfiguration = configuration; };
+in
+utils.getPackageRemoteName \"${PACKAGE}\"
 "`
 
 # Remove the quotes around the string
