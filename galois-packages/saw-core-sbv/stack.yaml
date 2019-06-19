@@ -1,9 +1,0 @@
-extra-deps:
-  - crackNum-2.3
-  - FloatingHex-0.4
-packages:
-  - '.'
-  - '../parameterized-utils'
-  - '../saw-core'
-  - '../sbv'
-resolver: lts-12.16

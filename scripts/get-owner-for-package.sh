@@ -1,12 +1,17 @@
 #!/usr/bin/env bash
-set -euv
+set -eu
 
 : ${GALOIS?Need path to Galois directory in GALOIS environment variable}
-: ${1?First argument should be a package name}
+: ${1?First argument should be a project name}
+: ${2?First argument should be a package name}
 
-PACKAGE=$1
+PROJECT=$1
+PACKAGE=$2
 
-OWNER=`nix-instantiate --eval -E "(import ${GALOIS}/configuration.nix).${PACKAGE}.owner or \"GaloisInc\""`
+OWNER=`nix-instantiate --eval -E "
+let configuration = import ${GALOIS}/configuration.nix; in
+configuration.${PACKAGE}.owner or \"GaloisInc\"
+"`
 
 # Remove the quotes around the string
 echo ${OWNER} | tr -d '"'

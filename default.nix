@@ -1,9 +1,12 @@
-{ nixpkgs ? import ./nixpkgs.nix }:
+{ nixpkgs           ? import <nixpkgs> {}
+, saw-nixpkgs       ? import ./projects/saw/nixpkgs.nix
+, codescape-nixpkgs ? import ./projects/codescape/nixpkgs.nix
+}:
 with nixpkgs;
 mkShell {
   buildInputs = [
-    codescape
-    saw-core-coq
-    saw-script
+    # codescape-nixpkgs.codescape
+    saw-nixpkgs.saw-core-coq
+    saw-nixpkgs.saw-script
   ];
 }

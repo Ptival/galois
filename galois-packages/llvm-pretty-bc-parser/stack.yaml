@@ -1,8 +1,0 @@
-extra-deps:
-  - dotgen-0.4.2
-  - fgl-visualize-0.1.0.1
-  - monadLib-3.8
-packages:
-  - '.'
-  - '../llvm-pretty'
-resolver: lts-12.16

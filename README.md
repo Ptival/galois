@@ -8,7 +8,7 @@ The setup assumes a directory structure as follows:
 
 ```
 `- Galois
-  `- galois-packages
+  `- projects
   | `- projectA
   | | `- subprojectA-A
   | | | `- default.nix
@@ -16,6 +16,9 @@ The setup assumes a directory structure as follows:
   | |   `- default.nix
   | `- projectB
   | | `- default.nix
+  | `- configuration.nix
+  | `- nixpkgs.nix
+  | `- overlay.nix
   | `- subprojectA-A.nix
   | `- subprojectA-B.nix
   | `- projectB.nix

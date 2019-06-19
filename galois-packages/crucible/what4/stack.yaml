@@ -1,4 +1,0 @@
-packages:
-  - '.'
-  - '../../parameterized-utils'
-resolver: lts-12.16

@@ -2,7 +2,12 @@ all: checkout
 
 GALOIS=$(shell pwd)
 
-PROJECTS=\
+CODESCAPE_PROJECTS=\
+	codescape\
+	polysemy\
+	polysemy-plugin
+
+SAW_PROJECTS=\
 	abcBridge\
 	aig\
 	binary-symbols\
@@ -38,17 +43,19 @@ build:
 	nix-shell
 
 checkout:
-	for i in ${PROJECTS}; do \
+	for i in ${SAW_PROJECTS}; do (\
+		echo "\n\n\n>>>>> $$i"; \
 		cd scripts; \
-		GALOIS=${GALOIS} ./checkout-galois-package.sh $$i; \
-	done
+		GALOIS=${GALOIS} ./checkout-galois-package.sh saw $$i; \
+	); done
 	echo "DONE"
 
 update:
-	for i in ${PROJECTS}; do \
+	for i in ${SAW_PROJECTS}; do (\
+		echo "\n\n\n>>>>> $$i"; \
 		cd scripts; \
-		GALOIS=${GALOIS} ./update-galois-package.sh $$i; \
-	done
+		GALOIS=${GALOIS} ./update-galois-package.sh saw $$i; \
+	); done
 	echo "DONE"
 
 .PHONY: all checkout clean update

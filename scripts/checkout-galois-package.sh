@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
-set -euv
+set -eu
 
 : ${GALOIS?Need path to Galois directory in GALOIS environment variable}
 : ${1?First argument should be a package name}
 
-BRANCH=`     ${GALOIS}/scripts/get-branch-for-package.sh ${1}`
+REVISION=`   ${GALOIS}/scripts/get-revision-for-package.sh ${1}`
 OWNER=`      ${GALOIS}/scripts/get-owner-for-package.sh ${1}`
 PACKAGEPATH=`${GALOIS}/scripts/get-path-for-package.sh ${1}`
 REMOTE=`     ${GALOIS}/scripts/get-remote-for-package.sh ${1}`
 
-cd ${GALOIS}/galois-packages
+cd ${GALOIS}/projects
 
 if [ ! -d "${REMOTE}" ]; then
     echo "Cloning package ${1} from remote ${OWNER}/${REMOTE}"
@@ -20,9 +20,9 @@ if [ ! -d "${REMOTE}" ]; then
     fi
 fi
 cd ${REMOTE}
-echo "Checking out branch ${BRANCH} for package ${1} from remote ${OWNER}/${REMOTE}"
-git checkout ${BRANCH}
+echo "Checking out revision ${REVISION} for package ${1} from remote ${OWNER}/${REMOTE}"
+git checkout ${REVISION}
 echo "Navigating to ${PACKAGEPATH}"
 cd ${PACKAGEPATH}
-echo "Generating default.nix for branch ${BRANCH} for package ${1} from remote ${OWNER}/${REMOTE}"
+echo "Generating default.nix for revision ${REVISION} for package ${1} from remote ${OWNER}/${REMOTE}"
 cabal2nix . > default.nix
