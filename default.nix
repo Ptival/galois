@@ -9,4 +9,5 @@ mkShell {
     saw-nixpkgs.saw-core-coq
     saw-nixpkgs.saw-script
   ];
+  name = "Galois";
 }
