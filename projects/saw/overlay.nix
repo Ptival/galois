@@ -6,6 +6,8 @@ let
 
   configuration = import ./configuration.nix;
 
+  notBroken = drv: superNixPkgs.haskell.lib.overrideCabal drv (drv: { broken = false; });
+
   utils = import ../../utils.nix { projectConfiguration = configuration; };
 
 in
@@ -37,27 +39,46 @@ in
   saw-script         = utils.makePackage selfNixPkgs "saw" "saw-script";
   what4              = utils.makePackage selfNixPkgs "saw" "what4";
 
-  haskellPackages = selfNixPkgs.haskell.packages.${compiler}.extend (selfHaskellPkgs: superHaskellPkgs: {
+  haskellPackages = selfNixPkgs.haskell.packages.${compiler}.extend (selfHaskellPkgs: superHaskellPkgs:
+    let
 
-    abcBridge             = utils.makePackage selfNixPkgs "saw" "abcBridge";
-    # Current aeson does not build with ghc844 because it's missing `contravariant` dependency
-    # cf. https://github.com/Nix./nixpkgs/issues/53620
-    # aeson                 = superNixPkgs.haskell.lib.addBuildDepends superHaskellPkgs.aeson [ selfHaskellPkgs.contravariant ];
-    aeson                 = superNixPkgs.haskell.lib.addBuildDepends selfHaskellPkgs.aeson_1_4_3_0 [ selfHaskellPkgs.contravariant ]; # because of th-abstraction
-    aig                   = utils.makePackage selfNixPkgs "saw" "aig";
-    contravariant         = selfHaskellPkgs.contravariant_1_5_2;
-    cryptol               = utils.makePackage selfNixPkgs "saw" "cryptol";
-    Diff                  = superNixPkgs.haskell.lib.dontCheck superHaskellPkgs.Diff;
-    ghc-lib-parser        = superNixPkgs.haskell.lib.dontHaddock superHaskellPkgs.ghc-lib-parser;
-    jvm-parser            = utils.makePackage selfNixPkgs "saw" "jvm-parser";
-    llvm-pretty           = utils.makePackage selfNixPkgs "saw" "llvm-pretty";
-    llvm-pretty-bc-parser = utils.makePackage selfNixPkgs "saw" "llvm-pretty-bc-parser";
-    parameterized-utils   = utils.makePackage selfNixPkgs "saw" "parameterized-utils";
-    sbv                   = utils.makePackage selfNixPkgs "saw" "sbv";
-    th-abstraction        = selfHaskellPkgs.th-abstraction_0_3_1_0; # needed for llvm-pretty 0.10.3
-    th-lift               = selfHaskellPkgs.th-lift_0_8_0_1;        # because of th-abstraction
-    z3                    = superNixPkgs.haskell.lib.dontCheck superHaskellPkgs.z3;
+      addBuildDepends = superNixPkgs.haskell.lib.addBuildDepends;
+      dontCheck       = superNixPkgs.haskell.lib.dontCheck;
+      dontHaddock     = superNixPkgs.haskell.lib.dontHaddock;
 
-  });
+    in
+    {
+
+      abcBridge             = utils.makePackage selfNixPkgs "saw" "abcBridge";
+      # Current aeson does not build with ghc844 because it's missing `contravariant` dependency
+      # cf. https://github.com/Nix./nixpkgs/issues/53620
+      # aeson                 = addBuildDepends superHaskellPkgs.aeson [ selfHaskellPkgs.contravariant ];
+      aeson                 = dontCheck (addBuildDepends selfHaskellPkgs.aeson_1_4_3_0 [ selfHaskellPkgs.contravariant ]); # because of th-abstraction
+      # aeson                 = dontCheck (addBuildDepends selfHaskellPkgs.aeson_1_4_4_0 [ selfHaskellPkgs.contravariant ]); # because of th-abstraction
+      aig                   = utils.makePackage selfNixPkgs "saw" "aig";
+      # ansi-terminal         = selfHaskellPkgs.ansi-terminal_0_9_1;
+      # contravariant         = selfHaskellPkgs.contravariant_1_5_2;
+      cryptol               = utils.makePackage selfNixPkgs "saw" "cryptol";
+      Diff                  = dontCheck superHaskellPkgs.Diff;
+      ghc-lib-parser        = dontHaddock superHaskellPkgs.ghc-lib-parser;
+      # hashable              = dontCheck superHaskellPkgs.hashable;
+      # hspec-meta            = dontCheck superHaskellPkgs.hspec-meta;
+      jvm-parser            = utils.makePackage selfNixPkgs "saw" "jvm-parser";
+      llvm-pretty           = utils.makePackage selfNixPkgs "saw" "llvm-pretty";
+      llvm-pretty-bc-parser = utils.makePackage selfNixPkgs "saw" "llvm-pretty-bc-parser";
+      parameterized-utils   = utils.makePackage selfNixPkgs "saw" "parameterized-utils";
+      # QuickCheck            = selfHaskellPkgs.QuickCheck_2_13_2;
+      # quickcheck-instances  =
+      #   addBuildDepends
+      #     selfHaskellPkgs.quickcheck-instances_0_3_22
+      #     [ selfHaskellPkgs.QuickCheck_2_13_2 ]; # cannot override QuickCheck itself as it creates a loop
+      sbv                   = utils.makePackage selfNixPkgs "saw" "sbv";
+      # tasty                 = selfHaskellPkgs.tasty_1_2_3;
+      th-abstraction        = selfHaskellPkgs.th-abstraction_0_3_1_0; # needed for llvm-pretty 0.10.3
+      th-lift               = selfHaskellPkgs.th-lift_0_8_0_1;        # because of th-abstraction
+      time-compat           = dontCheck selfHaskellPkgs.time-compat_1_9_2_2;
+      z3                    = notBroken (dontCheck superHaskellPkgs.z3);
+
+    });
 
 }

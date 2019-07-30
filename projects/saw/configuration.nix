@@ -9,7 +9,7 @@ in
 
 {
 
-  compiler = "ghc844";
+  compiler = "ghc864";
 
   packages =
 
@@ -215,6 +215,7 @@ in
       };
 
       saw-core-coq = {
+        base = sawDepsBase;
         local = true;
       };
 
