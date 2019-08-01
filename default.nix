@@ -5,11 +5,17 @@
 with nixpkgs;
 mkShell {
   buildInputs = [
+
+    # Galois projects
     codescape-nixpkgs.codescape
-    coq
-    coqPackages.coq-extensible-records
     saw-nixpkgs.saw-core-coq
     saw-nixpkgs.saw-script
+
+    # Personal dependencies
+    coq
+    coqPackages.coq-extensible-records
+    haskellPackages.hpack
+
   ];
   name = "Galois";
 }
