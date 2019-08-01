@@ -5,7 +5,9 @@
 with nixpkgs;
 mkShell {
   buildInputs = [
-    # codescape-nixpkgs.codescape
+    codescape-nixpkgs.codescape
+    coq
+    coqPackages.coq-extensible-records
     saw-nixpkgs.saw-core-coq
     saw-nixpkgs.saw-script
   ];
