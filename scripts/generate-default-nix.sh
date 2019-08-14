@@ -22,7 +22,8 @@ echo "Generating default.nix for package ${1}/${2}"
     # NOTE: you cannot just use fetchGit, because some projects live in git subdirectories,
     # which creates problems.
     sed -i -e 's~src = ./.~src = builtins.filterSource (path: type:\
-         baseNameOf path != ".git"\
+       baseNameOf path != ".git"\
+    \&\& baseNameOf path != ".codescape_store"\
     \&\& baseNameOf path != ".stack-work"\
     \&\& baseNameOf path != "dist"\
     \&\& baseNameOf path != "dist-newstyle"\

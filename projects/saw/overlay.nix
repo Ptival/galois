@@ -53,8 +53,8 @@ in
       # Current aeson does not build with ghc844 because it's missing `contravariant` dependency
       # cf. https://github.com/Nix./nixpkgs/issues/53620
       # aeson                 = addBuildDepends superHaskellPkgs.aeson [ selfHaskellPkgs.contravariant ];
-      aeson                 = dontCheck (addBuildDepends selfHaskellPkgs.aeson_1_4_3_0 [ selfHaskellPkgs.contravariant ]); # because of th-abstraction
-      # aeson                 = dontCheck (addBuildDepends selfHaskellPkgs.aeson_1_4_4_0 [ selfHaskellPkgs.contravariant ]); # because of th-abstraction
+      # aeson                 = dontCheck (addBuildDepends selfHaskellPkgs.aeson_1_4_3_0 [ selfHaskellPkgs.contravariant ]); # because of th-abstraction
+      aeson                 = dontCheck (addBuildDepends selfHaskellPkgs.aeson_1_4_4_0 [ selfHaskellPkgs.contravariant ]); # because of th-abstraction
       aig                   = utils.makePackage selfNixPkgs "saw" "aig";
       # ansi-terminal         = selfHaskellPkgs.ansi-terminal_0_9_1;
       # contravariant         = selfHaskellPkgs.contravariant_1_5_2;
