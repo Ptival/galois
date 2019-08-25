@@ -52,9 +52,9 @@ in
       abcBridge             = utils.makePackage selfNixPkgs "saw" "abcBridge";
       # Current aeson does not build with ghc844 because it's missing `contravariant` dependency
       # cf. https://github.com/Nix./nixpkgs/issues/53620
-      # aeson                 = addBuildDepends superHaskellPkgs.aeson [ selfHaskellPkgs.contravariant ];
+      aeson                 = addBuildDepends superHaskellPkgs.aeson [ selfHaskellPkgs.contravariant ];
       # aeson                 = dontCheck (addBuildDepends selfHaskellPkgs.aeson_1_4_3_0 [ selfHaskellPkgs.contravariant ]); # because of th-abstraction
-      aeson                 = dontCheck (addBuildDepends selfHaskellPkgs.aeson_1_4_4_0 [ selfHaskellPkgs.contravariant ]); # because of th-abstraction
+      # aeson                 = dontCheck (addBuildDepends selfHaskellPkgs.aeson_1_4_4_0 [ selfHaskellPkgs.contravariant ]); # because of th-abstraction
       aig                   = utils.makePackage selfNixPkgs "saw" "aig";
       # ansi-terminal         = selfHaskellPkgs.ansi-terminal_0_9_1;
       # contravariant         = selfHaskellPkgs.contravariant_1_5_2;
@@ -74,9 +74,9 @@ in
       #     [ selfHaskellPkgs.QuickCheck_2_13_2 ]; # cannot override QuickCheck itself as it creates a loop
       sbv                   = utils.makePackage selfNixPkgs "saw" "sbv";
       # tasty                 = selfHaskellPkgs.tasty_1_2_3;
-      th-abstraction        = selfHaskellPkgs.th-abstraction_0_3_1_0; # needed for llvm-pretty 0.10.3
-      th-lift               = selfHaskellPkgs.th-lift_0_8_0_1;        # because of th-abstraction
-      time-compat           = dontCheck selfHaskellPkgs.time-compat_1_9_2_2;
+      # th-abstraction        = selfHaskellPkgs.th-abstraction_0_3_1_0; # needed for llvm-pretty 0.10.3
+      # th-lift               = selfHaskellPkgs.th-lift_0_8_0_1;        # because of th-abstraction
+      # time-compat           = dontCheck selfHaskellPkgs.time-compat_1_9_2_2;
       z3                    = notBroken (dontCheck superHaskellPkgs.z3);
 
     });

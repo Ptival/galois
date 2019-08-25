@@ -3,7 +3,8 @@ all: checkout
 GALOIS=$(shell pwd)
 
 CODESCAPE_PROJECTS=\
-	codescape
+	codescape\
+	polysemy
 
 SAW_PROJECTS=\
 	abcBridge\

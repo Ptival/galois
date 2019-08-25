@@ -11,9 +11,12 @@
 
     polysemy = {
       local = true;
-      owner = "isovector";
-      remote = "polysemy";
-      rev = "c937132caa43bbd4e2360e50e5de5b39cc0ceb24";
+      remote = {
+        owner = "isovector";
+        repo = "polysemy";
+        rev = "f2ca91d57d02f8668d0204ec994a717b206e7575";
+        sha256 = "0nvsgjjm0yjn02h4ykdqqvpm4d63avpfj4r5vj26d407ipkmr389";
+      };
     };
 
     polysemy-plugin = {

@@ -6,7 +6,7 @@ rec {
 
   getPackagePathInRepo = pkg: pkg.path or ".";
 
-  getPackageRemoteName = pkgName: projectConfiguration.packages.${pkgName}.remote or pkgName;
+  getPackageRemoteName = pkgName: projectConfiguration.packages.${pkgName}.remote.repo or pkgName;
 
   getPackageLocalPath  =
     pkgName:
@@ -21,8 +21,9 @@ rec {
       pkg           = projectConfiguration.packages.${packageName};
       pkgPathToRepo = getPackagePathToRepo pkg;
       pkgPathInRepo = getPackagePathInRepo pkg;
-      remoteName    = pkg.remote or packageName;
-      remoteInfo    = builtins.fromJSON (builtins.readFile (./projects/revisions + "/${packageName}.json"));
+      remoteName    = getPackageRemoteName packageName;
+      remoteInfo    = pkg.remote;
+      noWrapper     = nixpkgs: drv: drv;
       drv           =
         if pkg.local
         then
@@ -35,7 +36,6 @@ rec {
             ((nixpkgs.fetchFromGitHub remoteInfo) + "/${pkgPathInRepo}")
             {}
       ;
-      noWrapper   = nixpkgs: drv: drv;
     in
       # If the `pkg` contains a `wrapper` field, said field is a function
       # expecting `nixpkgs` and the derivation as input, and that performs

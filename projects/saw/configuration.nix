@@ -54,7 +54,9 @@ in
         base = sawDepsBase;
         local = true;
         path = "crucible";
-        remote = "crucible";
+        remote = {
+          repo = "crucible";
+        };
       };
 
       crucible-jvm = {
@@ -117,13 +119,17 @@ in
       galois-dwarf = {
         base = sawDepsBase;
         local = true;
-        remote = "dwarf";
+        remote = {
+          repo = "dwarf";
+        };
       };
 
       flexdis86 = {
         base = sawDepsBase;
         local = true;
-        remote = "flexdis86";
+        remote = {
+          repo = "flexdis86";
+        };
       };
 
       jvm-parser = {
@@ -172,7 +178,9 @@ in
       macaw = {
         base = sawDepsBase;
         local = true;
-        remote = "macaw";
+        remote = {
+          repo = "macaw";
+        };
       };
 
       macaw-base = {
@@ -231,7 +239,9 @@ in
 
       saw-script = {
         local = true; # Darwin fix
-        rev = "coq-export";
+        remote = {
+          rev = "coq-export";
+        };
         wrapper = nixpkgs: drv:
           overrideGPlusPlus nixpkgs (
             drv
@@ -240,8 +250,10 @@ in
 
       sbv = {
         local = true;
-        owner = "LeventErkok";
-        rev = "v8.0";
+        remote = {
+          owner = "LeventErkok";
+          rev = "v8.0";
+        };
       };
 
       what4 = {
