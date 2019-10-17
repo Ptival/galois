@@ -10,7 +10,7 @@ PACKAGE=$2
 
 # WARNING: don't rename this variable PATH as it means something to Linux!
 PACKAGEPATH=`${GALOIS}/scripts/get-local-path.sh ${1} ${2}`
-REVISION=`   ${GALOIS}/scripts/get-revision.sh ${1} ${2}`
+REVISION=`   ${GALOIS}/scripts/get-revision.sh   ${1} ${2}`
 
 echo "Updating package ${1}/${2} from remote ${OWNER}/${REMOTE} to revision \"${REVISION}\""
 

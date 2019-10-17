@@ -21,8 +21,10 @@ echo "Generating default.nix for package ${1}/${2}"
     # with something filtering out non-important paths
     # NOTE: you cannot just use fetchGit, because some projects live in git subdirectories,
     # which creates problems.
+    # .ghc.environment is super important to remove, it will break packages
     sed -i -e 's~src = ./.~src = builtins.filterSource (path: type:\
-       baseNameOf path != ".git"\
+         !(stdenv.lib.strings.hasPrefix ".ghc.environment" (baseNameOf path))\
+    \&\& baseNameOf path != ".git"\
     \&\& baseNameOf path != ".codescape_store"\
     \&\& baseNameOf path != ".stack-work"\
     \&\& baseNameOf path != "dist"\

@@ -58,7 +58,8 @@ in
       aig                   = utils.makePackage selfNixPkgs "saw" "aig";
       # ansi-terminal         = selfHaskellPkgs.ansi-terminal_0_9_1;
       # contravariant         = selfHaskellPkgs.contravariant_1_5_2;
-      cryptol               = utils.makePackage selfNixPkgs "saw" "cryptol";
+      cryptol               = notBroken superHaskellPkgs.cryptol;
+      # cryptol               = utils.makePackage selfNixPkgs "saw" "cryptol";
       Diff                  = dontCheck superHaskellPkgs.Diff;
       ghc-lib-parser        = dontHaddock superHaskellPkgs.ghc-lib-parser;
       # hashable              = dontCheck superHaskellPkgs.hashable;

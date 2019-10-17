@@ -16,6 +16,8 @@ in
 
   codescape = utils.makePackage selfNixPkgs "codescape" "codescape";
 
+  ghc = selfNixPkgs.haskell.compiler.${compiler};
+
   haskellPackages = selfNixPkgs.haskell.packages.${compiler}.extend (selfHaskellPkgs: superHaskellPkgs: {
 
     aeson              = superNixPkgs.haskell.lib.dontCheck (superNixPkgs.haskell.lib.addBuildDepends superHaskellPkgs.aeson [ selfHaskellPkgs.contravariant ]);

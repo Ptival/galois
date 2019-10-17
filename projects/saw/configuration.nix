@@ -9,7 +9,7 @@ in
 
 {
 
-  compiler = "ghc864";
+  compiler = "ghc865";
 
   packages =
 
