@@ -2,13 +2,15 @@
 stdenv.mkDerivation rec {
   name = "coq${coq.coq-version}-fix-to-elim";
 
-  src = fetchFromGitHub {
-    fetchSubmodules = true;
-    owner = "uwplse";
-    repo = "fix-to-elim";
-    rev = "d030756703ef3848f559eda49f9dc037fe8a8acb";
-    sha256 = "0p65ynbm1dy5kyzj0p46yg39p0kl137hyfggwn9hz76ivnagjiz4";
-  };
+  src = ./local/fix-to-elim;
+
+  # src = fetchFromGitHub {
+  #   fetchSubmodules = true;
+  #   owner = "uwplse";
+  #   repo = "fix-to-elim";
+  #   rev = "ae6850ff3133c8d9043b40f27f59f8e779ba5a9b";
+  #   sha256 = "0bxcd6hk2adg8iq4bm7bxf2zqh8kvcs1mvjbnlss4nczzkr19lk0";
+  # };
 
   buildInputs = [
     coq

@@ -2,12 +2,14 @@
 stdenv.mkDerivation rec {
   name = "coq${coq.coq-version}-coq-plugin-lib";
 
-  src = fetchFromGitHub {
-    owner = "uwplse";
-    repo = "coq-plugin-lib";
-    rev = "e4c69376ce3838cf9afff3734f7ddae168c997e1";
-    sha256 = "07jy7ch4r613b8hw31sv77a1k6knqmnj8b8d8hli2vjklir8nhig";
-  };
+  src = ./local/coq-plugin-lib;
+
+  # src = fetchFromGitHub {
+  #   owner = "uwplse";
+  #   repo = "coq-plugin-lib";
+  #   rev = "c095e51d883d31863f8ef367bf39b2933224f663";
+  #   sha256 = "0811mciygiw3lgn298y9xqcsxddq9d0ajshwac780n5ifzzw8by4";
+  # };
 
   buildInputs = [ coq ];
   propagatedBuildInputs = with coq.ocamlPackages;

@@ -2,13 +2,15 @@
 stdenv.mkDerivation rec {
   name = "coq${coq.coq-version}-ornamental-search";
 
-  src = fetchFromGitHub {
-    fetchSubmodules = true;
-    owner = "uwplse";
-    repo = "ornamental-search";
-    rev = "e11b60c88c0acc9752bee3ce8c7ca626cfca53d6";
-    sha256 = "0z9swxk6xgy8lr6f1kwp3rvk380pp4qs50xsyph2bhsrdqpdqi82";
-  };
+  src = ./local/ornamental-search;
+
+  # src = fetchFromGitHub {
+  #   fetchSubmodules = true;
+  #   owner = "uwplse";
+  #   repo = "ornamental-search";
+  #   rev = "2e54ab956d03788066ef739673f7e7b681bce8ac";
+  #   sha256 = "0fchk10wxqxp70zv1sxr2869wbcm9vpmpim3kwy271gbm8apgpds";
+  # };
 
   buildInputs = [
     coq
