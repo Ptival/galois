@@ -1,4 +1,4 @@
-{ nixpkgs ? import ~/nixpkgs { overlays = [ (import ./overlay.nix) ]; }
+{ nixpkgs ? import <nixpkgs> { overlays = [ (import ./overlay.nix) ]; }
 }:
 with nixpkgs;
 mkShell {
