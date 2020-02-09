@@ -50,11 +50,11 @@ checkout:
 	echo "DONE"
 
 default-nix:
-	for i in ${CODESCAPE_PROJECTS}; do (\
-		echo "\n\n\n>>>>> $$i"; \
-		cd scripts; \
-		GALOIS=${GALOIS} ./generate-default-nix.sh codescape $$i; \
-	); done
+# 	for i in ${CODESCAPE_PROJECTS}; do (\
+# 		echo "\n\n\n>>>>> $$i"; \
+# 		cd scripts; \
+# 		GALOIS=${GALOIS} ./generate-default-nix.sh codescape $$i; \
+# 	); done
 	for i in ${SAW_PROJECTS}; do (\
 		echo "\n\n\n>>>>> $$i"; \
 		cd scripts; \

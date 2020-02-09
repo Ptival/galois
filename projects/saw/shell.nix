@@ -13,6 +13,7 @@ mkShell {
     #(import ./abcBridge.nix {}).env
     #(import ./cryptol-verifier.nix {}).env
   ];
+  name="saw";
 }
 
 

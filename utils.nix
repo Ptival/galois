@@ -34,7 +34,7 @@ rec {
           nixpkgs.haskellPackages.callCabal2nix
             packageName
             ((nixpkgs.fetchFromGitHub remoteInfo) + "/${pkgPathInRepo}")
-            {}
+            { sourceRoot = "."; }
       ;
     in
       # If the `pkg` contains a `wrapper` field, said field is a function

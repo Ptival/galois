@@ -252,7 +252,9 @@ in
         local = true;
         remote = {
           owner = "LeventErkok";
+          repo = "sbv";
           rev = "v8.0";
+          sha256 = "0b6a9lj3ch1iji6kia7jpri87v2jnk68chpshxv54wzld93c2qvb";
         };
       };
 
