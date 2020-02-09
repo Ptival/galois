@@ -1,0 +1,12 @@
+[submodule "projects/PUMPKIN-PATCH/local/PUMPKIN-PATCH"]
+	path = projects/PUMPKIN-PATCH/local/PUMPKIN-PATCH
+	url = https://github.com/uwplse/PUMPKIN-PATCH.git
+[submodule "projects/PUMPKIN-PATCH/local/ornamental-search"]
+	path = projects/PUMPKIN-PATCH/local/ornamental-search
+	url = https://github.com/uwplse/ornamental-search.git
+[submodule "projects/PUMPKIN-PATCH/local/coq-plugin-lib"]
+	path = projects/PUMPKIN-PATCH/local/coq-plugin-lib
+	url = https://github.com/uwplse/coq-plugin-lib.git
+[submodule "projects/PUMPKIN-PATCH/local/fix-to-elim"]
+	path = projects/PUMPKIN-PATCH/local/fix-to-elim
+	url = https://github.com/uwplse/fix-to-elim.git
