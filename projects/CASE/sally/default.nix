@@ -17,7 +17,13 @@ stdenv.mkDerivation rec {
 
   cmakeFlags = [ "-DCMAKE_BUILD_TYPE=Debug" ];
 
-  nativeBuildInputs = [ cmake gmp makeWrapper openjdk pkgconfig ];
+  nativeBuildInputs = [
+    cmake
+    gmp
+    makeWrapper
+    openjdk
+    pkgconfig
+  ];
 
   # Darwin uses clang, which issues this warning as an error
   NIX_CFLAGS_COMPILE = stdenv.lib.optionalString stdenv.isDarwin "-Wno-return-std-move";
@@ -30,5 +36,9 @@ stdenv.mkDerivation rec {
     license     = stdenv.lib.licenses.gpl3;
     maintainers = [ stdenv.lib.maintainers.ptival ];
   };
+
+  patchPhase = ''
+    patchShebangs antlr/antlr3
+  '';
 
 }
