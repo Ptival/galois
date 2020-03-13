@@ -1,5 +1,6 @@
 { nur ? (import <nixpkgs> {}).nur
 , nixpkgs ? import <nixpkgs> { overlays = [ nur.repos.ptival.overlays.PUMPKIN-PATCH ]; }
+#, nixpkgs ? import <nixpkgs> { overlays = [ (import ~/personal/nur-packages/overlays/PUMPKIN-PATCH) ]; }
 }:
 with nixpkgs;
 mkShell {
