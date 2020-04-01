@@ -1,14 +1,17 @@
-{ nur ? (import ~/personal/nur-packages {})
+{ nur ? import ~/personal/nur-packages {}
 # { nur ? (import <nixpkgs> {}).nur.repos.ptival
-, nixpkgs ? import <nixpkgs> {}
-# , nixpkgs ? import <nixpkgs> { overlays = [ nur.repos.ptival.overlays.PUMPKIN-PATCH ]; }
+, nixpkgs ? import <nixpkgs> { overlays = [ nur.overlays.case ]; }
 }:
 with nixpkgs;
 with nur;
+let
+  lustre-sally = nur.lib.callCabal2nixGitignore nixpkgs "lustre-sally" ./lustre-sally {};
+in
 mkShell {
   buildInputs = [
-    (import ./abc.nix {})
-    graphviz                # for dot
+    abc
+    graphviz # for dot
+    lustre-sally
     sally
   ];
 }
