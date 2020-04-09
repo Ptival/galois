@@ -1,5 +1,4 @@
-{ nur     ? import ~/personal/nur-packages {}
-, nixpkgs ? import <nixpkgs> {}
+{ nur ? import ~/personal/nur-packages {}
 }:
 let
   config = import ./config.nix {};
@@ -10,11 +9,10 @@ nur.lib.stackShell {
     pkgs.zlib
   ];
 
-  inherit (config) nixpkgsRev pkg;
+  inherit (config) ghcVersion nixpkgsRev pkg;
 
   nixpkgsArgs = {
     overlays = [
-      config.haskell-dev-overlay
       config.what4-overlay
     ];
   };

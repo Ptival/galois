@@ -2,14 +2,15 @@
 }:
 let
   config = import ./config.nix {};
+  haskell-dev-overlay = nur.overlays.haskell-dev.${config.ghcVersion};
 in
 nur.lib.haskellDevShell {
 
-  inherit (config) nixpkgsRev pkg;
+  inherit (config) ghcVersion nixpkgsRev pkg;
 
   nixpkgsArgs = {
     overlays = [
-      config.haskell-dev-overlay
+      haskell-dev-overlay
       config.what4-overlay
     ];
   };

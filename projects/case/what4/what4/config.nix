@@ -4,8 +4,6 @@ rec {
 
   ghcVersion = "ghc865";
 
-  haskell-dev-overlay = nur.overlays.haskell-dev.${ghcVersion};
-
   what4-overlay = self: super:
     let
 

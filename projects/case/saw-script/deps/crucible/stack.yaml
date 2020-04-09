@@ -1,0 +1,41 @@
+extra-deps:
+  - GraphSCC-1.0.4@sha256:dc3c6d6c59c15a50c9ce701bdead86f19bc2367e0d30c81a7bf55ccc6e5bd04d,936
+  - boomerang-1.4.5.7@sha256:67358e1ed44db2da2bf5ba8b5ccde4e3cd19adbc286c5308dba448f89fb03c4a,1979
+  - config-schema-1.2.0.0@sha256:c13dcb7489031fb2906f624ee8b1a8102f6cb0a259e15d7ebe766d6734b5983c,2154
+  - config-value-0.7.0.1@sha256:cc8c5d0c94866f7ae92671214aa4fb87be39390083949f70076d3682d2f32d83,1899
+  - fgl-visualize-0.1.0.1@sha256:e682066053a6e75478a08fd6822dd0143a3b8ea23244bdb01dd389a266447c5e,995
+  - itanium-abi-0.1.1.1@sha256:1d727fa88ecafc13ba4ec2b6a752182ce70333fbde9726aec1393151d14de6df,1520
+  - monadLib-3.10@sha256:21dc120625bd612527b372e54251fd8358270effe263023d40d8e5892d24531c,653
+  - panic-0.4.0.1@sha256:fb46577c9e0ca38c37960572f958a8469f2b577e963ed4f3ea1904d8400d828b,702
+  - simple-get-opt-0.4@sha256:0ba4d32f64b26d30f6182a3fcd88c71d71622035152e726de41e9a46d945b09f,765
+  - simple-smt-0.9.4@sha256:93746e0c4bade39c9848549103de5b65b169f1faa5b76c7b9bcde2031f31c58f,775
+  - zenc-0.1.1@sha256:e4be3e5e9fe1a1ade05910909c6e5b5a8eff72e697868b03955c9781b0443947,964
+
+nix:
+  shell-file: stack-shell.nix
+
+packages:
+  - ./crucible
+  - ./crucible-jvm
+  - ./crucible-llvm
+  - ./crucible-saw
+  - ./crux
+  - ./crux-llvm
+  - ./dependencies/abcBridge
+  - ./dependencies/aig
+  - ./dependencies/blt
+  - ./dependencies/cryptol
+  - ./dependencies/cryptol-verifier
+  - ./dependencies/hpb
+  - ./dependencies/jvm-parser
+  - ./dependencies/language-sally
+  - ./dependencies/llvm-pretty
+  - ./dependencies/llvm-pretty-bc-parser
+  - ./dependencies/parameterized-utils
+  - ./dependencies/saw-core
+  - ./dependencies/saw-core-aig
+  - ./dependencies/saw-core-sbv
+  - ./dependencies/saw-core-what4
+  - ./dependencies/what4/what4
+
+resolver: lts-14.27
