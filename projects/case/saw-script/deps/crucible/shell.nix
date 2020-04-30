@@ -6,6 +6,10 @@ let
 in
 nur.lib.haskellDevShell {
 
+  addBuildInputs = pkgs: [
+    pkgs.clang
+  ];
+
   inherit (crucible-config) ghcVersion nixpkgsRev pkg;
 
   nixpkgsArgs = {

@@ -18,6 +18,7 @@ packages:
   - ./crucible
   - ./crucible-jvm
   - ./crucible-llvm
+  - ./crucible-mc
   - ./crucible-saw
   - ./crux
   - ./crux-llvm

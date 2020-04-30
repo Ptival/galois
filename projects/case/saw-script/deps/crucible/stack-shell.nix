@@ -11,6 +11,7 @@ nur.lib.stackShell {
     pkgs.glpk
     pkgs.ntl
     pkgs.zlib
+    pkgs.z3
   ];
 
   inherit (crucible-config) ghcVersion nixpkgsRev pkg;
